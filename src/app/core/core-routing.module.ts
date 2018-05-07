@@ -27,6 +27,10 @@ const routes: Routes = [
       path: 'home',
       component: HomeComponent
     },
+    {
+      path: 'chat',
+      loadChildren: '../chat/chat.module#ChatModule'
+    },
     // {
     //   path: 'admin',
     //   canActivate: [AuthGuard],
