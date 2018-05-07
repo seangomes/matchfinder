@@ -1,0 +1,11 @@
+.chatwindow-container {
+  height: 100%;
+}
+
+.message-content.row:nth-child(even) {
+  background-color:#F1F1F1;
+}
+
+.message-content.row:nth-child(odd) {
+  background-color:#FFFFFF;
+}

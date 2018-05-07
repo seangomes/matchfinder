@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatRoutingModule } from './chat-routing.module';
+import { FormsModule } from '@angular/forms';
+
 
 
 //COMPONENTS
@@ -10,14 +12,16 @@ import { MessageboxComponent } from './components/messagebox/messagebox.componen
 import { ChatComponent } from './chat.component';
 
 //SERVICES
-
+import { ChatService } from "./providers/chat/chat.service";
 
 
 @NgModule({
   imports: [
     CommonModule,
-    ChatRoutingModule
+    ChatRoutingModule,
+    FormsModule
   ],
-  declarations: [ConnectedUserlistComponent, ChatwindowComponent, MessageboxComponent, ChatComponent]
+  declarations: [ConnectedUserlistComponent, ChatwindowComponent, MessageboxComponent, ChatComponent],
+  providers: [ChatService]
 })
 export class ChatModule { }

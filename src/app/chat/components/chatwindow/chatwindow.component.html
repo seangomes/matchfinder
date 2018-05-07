@@ -1,3 +1,17 @@
-<p>
-  chatwindow works!
-</p>
+<div class="chatwindow-container">
+  <div class="card">
+    <div class="card-body">
+
+
+      <div class="row message-content" *ngFor="let message of messages$ | async">
+        <div class="col-2">
+          {{message.date}}
+          <{{message.postedby}}>
+        </div>
+        <div class="col">{{message.content}}</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
