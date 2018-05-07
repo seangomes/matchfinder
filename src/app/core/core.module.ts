@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 //SEVICES
 import { AuthService } from './providers/auth/auth.service';
@@ -27,8 +29,8 @@ import { RouterModule } from '@angular/router';
     CommonModule
   ],
   providers: [AuthService],
-  declarations: [NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent],
-  exports: [RouterModule , NavComponent]
+  declarations: [NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent],
+  exports: [RouterModule , NavComponent, FooterComponent]
 })
 export class CoreModule {
 

@@ -1,0 +1,17 @@
+.content-container {
+   border-right: 1px solid black;
+}
+
+.content-container:nth-last-child(1) {
+    border-right: none;
+ }
+
+.contantBtn {
+    width: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
