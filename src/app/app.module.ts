@@ -1,8 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from 'angularfire2';
 
-
+//COMPONENTS
 import { AppComponent } from './app.component';
+
+//SERVICES
+
+//MODULES
+import { CoreModule } from './core/core.module';
+
+//FIREBASE DATABASE CONN
+const fbConfig = {
+  apiKey: "AIzaSyBMXvfxePCPxcrZDYfbhEp3O0dS5TedJWQ",
+  authDomain: "aktieporfolio.firebaseapp.com",
+  databaseURL: "https://aktieporfolio.firebaseio.com",
+  projectId: "aktieporfolio",
+  storageBucket: "aktieporfolio.appspot.com",
+  messagingSenderId: "797606110857"
+};
 
 
 @NgModule({
@@ -10,7 +26,9 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AngularFireModule.initializeApp(fbConfig),
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
