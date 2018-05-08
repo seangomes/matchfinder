@@ -3,4 +3,5 @@ export class ChatMessage {
   date: string;
   content: string;
   postedby: string;
+  matchtype: string;
 }

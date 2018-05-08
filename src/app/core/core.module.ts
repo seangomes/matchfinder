@@ -15,6 +15,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 //SEVICES
 import { AuthService } from './providers/auth/auth.service';
+import { DummydataService } from "./providers/dummyData/dummydata.service";
 
 //MODULES
 import { CoreRoutingModule } from './core-routing.module';
@@ -28,7 +29,7 @@ import { RouterModule } from '@angular/router';
     CoreRoutingModule,
     CommonModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, DummydataService],
   declarations: [NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent],
   exports: [RouterModule , NavComponent, FooterComponent]
 })

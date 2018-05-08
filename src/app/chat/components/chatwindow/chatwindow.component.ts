@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatMessage } from "../../models/chatmessage";
-
 import { ChatService } from '../../providers/chat/chat.service';
 import { Observable } from 'rxjs/Observable';
-
 
 @Component({
   selector: 'app-chatwindow',
