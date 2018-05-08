@@ -6,22 +6,23 @@ import { FormsModule } from '@angular/forms';
 
 
 //COMPONENTS
-import { ConnectedUserlistComponent } from './components/connected-userlist/connected-userlist.component';
 import { ChatwindowComponent } from './components/chatwindow/chatwindow.component';
 import { MessageboxComponent } from './components/messagebox/messagebox.component';
 import { ChatComponent } from './chat.component';
 
 //SERVICES
 import { ChatService } from "./providers/chat/chat.service";
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     ChatRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
-  declarations: [ConnectedUserlistComponent, ChatwindowComponent, MessageboxComponent, ChatComponent],
+  declarations: [ChatwindowComponent, MessageboxComponent, ChatComponent],
   providers: [ChatService]
 })
 export class ChatModule { }

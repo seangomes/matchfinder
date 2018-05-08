@@ -9,10 +9,14 @@ import { DummydataService } from './core/providers/dummyData/dummydata.service';
 export class AppComponent {
   title = 'app';
 
- 
+
   constructor(private dummyDataService: DummydataService) {
-    
-    
+
+
+  }
+
+  uploadUsers() {
+    this.dummyDataService.addDataUsers();
   }
 
   uploadChatMessages() {
