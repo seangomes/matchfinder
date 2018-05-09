@@ -3,9 +3,9 @@ export class User {
   email:string;
   password?: string;
   photoUrl?: string;
-  displayName: string;
-  firstname:string;
-  lastname: string;
+  username: string;
+  firstname?:string;
+  lastname?: string;
   online:boolean;
   clan?: string;
   favweap?: string;

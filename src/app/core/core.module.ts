@@ -1,6 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 
@@ -28,7 +28,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     AngularFirestoreModule,
     CoreRoutingModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, DummydataService, UserService],
   declarations: [NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent],
