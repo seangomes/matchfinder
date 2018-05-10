@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Match finder (LOGO)</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -19,12 +20,17 @@
         <a class="nav-link" [routerLink]="['/chat']" routerLinkActive="router-link-active">Chat</a>
       </li>
     </ul>
-    <button class="btn btn-primary loginBtn" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</button>
-    <button class="btn btn-danger" [routerLink]="['/register']" routerLinkActive="router-link-active" >Register</button>
 
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
+    <div *ngIf="!(user$ | async)?.username">
+      <button class="btn btn-primary loginBtn" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</button>
+      <button class="btn btn-danger" [routerLink]="['/register']" routerLinkActive="router-link-active">Register</button>
+    </div>
+    <div *ngIf="(user$ | async)?.username">
+      <span class="userInfoContent">
+        <img class="userPhoto" [src]="(user$ | async)?.photoUrl" height="30" width="30"/>
+         {{(user$ | async)?.username}}
+         <button class="btn btn-sm btn-default logoutBtn" (click)="logout()">Logout</button>
+        </span>
+    </div>
   </div>
 </nav>

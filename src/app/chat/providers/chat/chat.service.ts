@@ -3,20 +3,18 @@ import { ChatMessage } from "../../models/chatmessage";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-
-
+import { AuthService } from '../../../core/providers/auth/auth.service';
 
 @Injectable()
 export class ChatService {
 
   private messagesCollection :AngularFirestoreCollection<ChatMessage>;
-
   public messages$ : Observable<ChatMessage[]>;
 
-
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private authService: AuthService) {
     this.messagesCollection = afs.collection<ChatMessage>('chatmessages');
     this.messages$ = this.messagesCollection.valueChanges();
+
    }
 
    getMessages() : Observable<ChatMessage[]> {
@@ -27,9 +25,11 @@ export class ChatService {
 
     let dateNow = new Date().toDateString();
 
+    let currentUser = this.authService.currentUser;
+
     let messageObj : ChatMessage = {
       content: message,
-      postedby: "Sean",
+      postedby: currentUser.username,
       date: dateNow,
       matchtype: "5vs5"
     }

@@ -18,14 +18,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
 
     this.registerForm = this.fb.group({
-      email: ['', Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', Validators.required],
-      username: ['', Validators.required, CustomValidator.username(this.afs)]
+      username: ['', [Validators.required], [CustomValidator.username(this.afs)]]
     })
-  }
-
-  get email() {
-    return this.registerForm.get('email');
   }
 
   get username() {
@@ -33,10 +29,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterFormSubmit() {
-    if(this.registerForm.valid) { 
+    if(this.registerForm.valid) {
       //calling the service
       this.authService.register(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.username);
     }
   }
-
 }

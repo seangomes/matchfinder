@@ -28,7 +28,7 @@
         <label for="exampleInputUsername1">Username</label>
         <input type="text" formControlName="username" class="form-control" id="exampleInputUsername1" placeholder="Enter username">
         <!--Username Error message-->
-        <div *ngIf="registerForm.controls.username.invalid && registerForm.controls.username.touched">
+        <div *ngIf="username.invalid && username.touched">
           <div class="alert alert-danger errorSpace" role="alert">
             Username is required!
           </div>
@@ -37,11 +37,11 @@
         <div *ngIf="username.invalid && username.dirty" class="alert alert-danger errorSpace">
             {{ username.value }} is already taken
           </div>
-          
+
           <div *ngIf="username.valid" class="alert alert-success errorSpace">
             {{ username.value }} is available
           </div>
-          
+
           <div *ngIf="username.pending" class="alert alert-warning errorSpace">
             Hold tight... Checking availability of {{ username.value }}
           </div>
