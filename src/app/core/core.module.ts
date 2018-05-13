@@ -1,39 +1,30 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
-
-//COMPONENTS
-import { NavComponent } from './components/nav/nav.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
-import { FooterComponent } from './components/footer/footer.component';
-
 
 //SEVICES
 import { AuthService } from './providers/auth/auth.service';
 import { DummydataService } from "./providers/dummyData/dummydata.service";
 import { UserService } from "./providers/user/user.service";
+import { LoaderService } from './providers/loader/loader.service';
+import { AuthGuard } from './providers/auth/auth.guard';
 
 //MODULES
 import { CoreRoutingModule } from './core-routing.module';
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   imports: [
     AngularFireAuthModule,
-    FormsModule,
     AngularFirestoreModule,
     CoreRoutingModule,
-    CommonModule,
-    ReactiveFormsModule
+    CommonModule
   ],
-  providers: [AuthService, DummydataService, UserService],
-  declarations: [NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent],
-  exports: [RouterModule , NavComponent, FooterComponent]
+  providers: [AuthService, DummydataService, UserService, LoaderService, AuthGuard],
+  declarations: [],
+  exports: [RouterModule]
 })
 export class CoreModule {
 

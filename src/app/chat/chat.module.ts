@@ -13,6 +13,7 @@ import { ChatComponent } from './chat.component';
 //SERVICES
 import { ChatService } from "./providers/chat/chat.service";
 import { SharedModule } from '../shared/shared.module';
+import { MatchmakerComponent } from './components/matchmaker/matchmaker.component';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     SharedModule
   ],
-  declarations: [ChatwindowComponent, MessageboxComponent, ChatComponent],
+  declarations: [ChatwindowComponent, MessageboxComponent, ChatComponent, MatchmakerComponent],
   providers: [ChatService]
 })
 export class ChatModule { }

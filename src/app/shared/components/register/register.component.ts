@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { AuthService } from '../../providers/auth/auth.service';
+import { AuthService } from '../../../core/providers/auth/auth.service';
 import { CustomValidator } from './customValidator';
 import { AngularFirestore } from 'angularfire2/firestore';
 

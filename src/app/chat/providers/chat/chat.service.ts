@@ -25,7 +25,7 @@ export class ChatService {
 
     let dateNow = new Date().toDateString();
 
-    let currentUser = this.authService.currentUser;
+    let currentUser = this.authService.getCurrentUser;
 
     let messageObj : ChatMessage = {
       content: message,

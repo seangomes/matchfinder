@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ChatMessage } from "../../models/chatmessage";
 import { ChatService } from '../../providers/chat/chat.service';
 import { Observable } from 'rxjs/Observable';
+import { LoaderService } from '../../../core/providers/loader/loader.service';
+import 'rxjs/add/operator/do';
+
 
 @Component({
   selector: 'app-chatwindow',
@@ -10,14 +13,18 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ChatwindowComponent implements OnInit {
 
-
+  loader: Observable<boolean>;
   messages$ : Observable<ChatMessage[]>;
 
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService, private loaderService: LoaderService) { }
 
   ngOnInit() {
-    this.messages$ = this.chatService.getMessages();
+
+    this.messages$ = this.chatService.messages$
+      .do(data => this.loaderService.hideLoader()
+    );
+    this.loaderService.showLoader();
   }
 
 }

@@ -1,3 +1,7 @@
-<ul *ngFor="let user of onlineUsers$ | async">
-  <li>{{ user | json}}</li>
+<!--Loader-->
+<app-loader></app-loader>
+
+<!--Userlist-->
+<ul class="list-group list-group-flush" *ngFor="let user of onlineUsers$ | async">
+  <li class="list-group-item"><img [src]="user?.photoUrl" height="20" width="20" class="profileImage"/> {{user?.username}}</li>
 </ul>

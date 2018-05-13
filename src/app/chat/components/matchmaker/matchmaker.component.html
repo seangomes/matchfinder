@@ -1,0 +1,53 @@
+<div class="matchContainer">
+  <!--Toogle button matchmaker-->
+  <section class="toggleButton text-center">
+    <button class="btn btn-sm btn-primary matchBtn" (click)="toggleMatch()">Post match
+      <i [ngClass]="showMatchContainerClass"></i>
+    </button>
+  </section>
+
+  <!--Search match content-->
+  <div class="searchContainer card card-body" *ngIf="showMatchContainer">
+
+    <!--Final search result-->
+    <p>Your search text: {{selectedMatchType}} - maps: {{selectedMaps | json}} - rank: {{selectedRank}}</p>
+
+    <!--Match type section-->
+    <section class="macthSection">
+        <h4>Choose matchtype</h4>
+        {{selectedMatchType | json}}
+        <div class="input-group mb-3">
+            <div *ngFor="let matchtype of matchTypeList">
+              <button class="btn btn-primary selectButtons" (click)="addMatchType(matchtype)">{{matchtype}}</button>
+            </div>
+          </div>
+    </section>
+
+
+    <!--Map section-->
+    <section class="mapSection">
+      <h4>Choose map</h4>
+      {{selectedMaps | json}}
+      <div class="input-group mb-3">
+        <div *ngFor="let map of mapList">
+          <button class="btn btn-primary selectButtons" (click)="addMap(map)">{{map}}</button>
+        </div>
+      </div>
+    </section>
+
+    <!--Rank selection-->
+    <section class="rankSection">
+        <h4>Choose your rank</h4>
+        {{selectedRank | json}}
+        <div class="input-group mb-3">
+            <div *ngFor="let skillGroup of skillList; let i = index">
+              <div *ngFor="let skill of skillGroup; let i = index">
+                  <img [src]="skill.imageUrl" class="img-thumbnail" (click)="addRank(skill.name)" alt="skill.name" width="100" height="100">
+
+              </div>
+
+            </div>
+          </div>
+    </section>
+
+  </div>

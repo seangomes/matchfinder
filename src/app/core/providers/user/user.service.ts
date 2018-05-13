@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from "../../models/user";
+import { User } from "../../../shared/models/user";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -19,6 +19,8 @@ export class UserService {
 
     this.userCollection = afs.collection<User>('users');
     this.users$ = this.userCollection.valueChanges();
+
+    this.getOnlineUsers();
 
    }
 

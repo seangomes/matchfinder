@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //COMPONENTS
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
-import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from '../shared/components/home/home.component';
+import { LoginComponent } from '../shared/components/login/login.component';
+import { PagenotfoundComponent } from '../shared/components/pagenotfound/pagenotfound.component';
+import { RegisterComponent } from '../shared/components/register/register.component';
 
 //SERVICES
+import { AuthGuard } from './providers/auth/auth.guard';
+
 
 const routes: Routes = [
     {
@@ -29,7 +31,8 @@ const routes: Routes = [
     },
     {
       path: 'chat',
-      loadChildren: '../chat/chat.module#ChatModule'
+      loadChildren: '../chat/chat.module#ChatModule',
+      canActivate: [AuthGuard]
     },
     // {
     //   path: 'admin',

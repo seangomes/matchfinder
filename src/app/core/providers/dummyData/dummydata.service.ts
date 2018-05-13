@@ -3,7 +3,7 @@ import * as chatmesssagedata from './chatmessages';
 import * as usersdata from './users';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { ChatMessage } from '../../../chat/models/chatmessage';
-import { User } from '../../models/user';
+import { User } from '../../../shared/models/user';
 
 
 @Injectable()

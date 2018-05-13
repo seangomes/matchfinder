@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 
 //MODULES
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 //FIREBASE DATABASE CONN
 const fbConfig = {
@@ -28,7 +29,8 @@ const fbConfig = {
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(fbConfig),
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
