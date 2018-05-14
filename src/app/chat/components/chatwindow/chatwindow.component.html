@@ -3,7 +3,7 @@
     <div class="card-body">
       <!--Loader-->
       <app-loader></app-loader>
-      <div class="row message-content" *ngFor="let message of messages$ | async">
+      <div class="row message-content" *ngFor="let message of messages$ | async | matchfilter: matchTypeSearch:mapSearch:rankSearch">
         <div class="col-2">
           {{message?.date}}
           <{{message?.postedby}}>

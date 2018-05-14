@@ -1,3 +1,18 @@
-<p>
-  filterchat works!
-</p>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          {{matchTypeSearch | json}}
+          <!-- {{match | json}} -->
+            <select class="form-control" [(ngModel)]="matchTypeSearch" id="category">
+                <option value="" disabled selected>select a matchfilter</option>
+                <option *ngFor="let match of matchTypeDropdown" [value]="match.name">{{match.name}}</option>
+              </select>
+        </div>
+        <div class="col-4">search maps</div>
+        <div class="col-4">search ranks</div>
+      </div>
+    </div>
+  </div>
+</div>

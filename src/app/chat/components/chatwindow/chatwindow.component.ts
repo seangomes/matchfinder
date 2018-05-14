@@ -4,6 +4,8 @@ import { ChatService } from '../../providers/chat/chat.service';
 import { Observable } from 'rxjs/Observable';
 import { LoaderService } from '../../../core/providers/loader/loader.service';
 import 'rxjs/add/operator/do';
+import { MatchfilterPipe } from '../../../shared/pipes/matchfilter.pipe';
+
 
 
 @Component({
