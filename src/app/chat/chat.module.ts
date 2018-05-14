@@ -14,6 +14,7 @@ import { ChatComponent } from './chat.component';
 import { ChatService } from "./providers/chat/chat.service";
 import { SharedModule } from '../shared/shared.module';
 import { MatchmakerComponent } from './components/matchmaker/matchmaker.component';
+import { FilterchatComponent } from './components/filterchat/filterchat.component';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { MatchmakerComponent } from './components/matchmaker/matchmaker.componen
     FormsModule,
     SharedModule
   ],
-  declarations: [ChatwindowComponent, MessageboxComponent, ChatComponent, MatchmakerComponent],
+  declarations: [ChatwindowComponent, MessageboxComponent, ChatComponent, MatchmakerComponent, FilterchatComponent],
   providers: [ChatService]
 })
 export class ChatModule { }

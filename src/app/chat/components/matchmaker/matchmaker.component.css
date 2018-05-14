@@ -11,3 +11,7 @@
 .selectButtons {
   margin-right: 10px;
 }
+
+.selctedImage {
+  background-color: green;
+}

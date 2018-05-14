@@ -8,46 +8,63 @@
 
   <!--Search match content-->
   <div class="searchContainer card card-body" *ngIf="showMatchContainer">
-
+    <!--Validation message-->
+    <div class="alert alert-danger" role="alert" *ngIf="validationMessage !== ''">
+        {{validationMessage}}
+      </div>
     <!--Final search result-->
     <p>Your search text: {{selectedMatchType}} - maps: {{selectedMaps | json}} - rank: {{selectedRank}}</p>
 
     <!--Match type section-->
-    <section class="macthSection">
-        <h4>Choose matchtype</h4>
-        {{selectedMatchType | json}}
-        <div class="input-group mb-3">
-            <div *ngFor="let matchtype of matchTypeList">
-              <button class="btn btn-primary selectButtons" (click)="addMatchType(matchtype)">{{matchtype}}</button>
-            </div>
+    <section class="matchSection">
+      <h4>Choose matchtype</h4>
+      <div class="input-group mb-3">
+        <div *ngFor="let matchtype of matchTypeList">
+          <div *ngIf="matchtype.selected">
+            <button class="btn btn-success selectButtons matchTypeBtn" (click)="addMatchType(matchtype)">{{matchtype.name}}</button>
           </div>
+          <div *ngIf="!matchtype.selected">
+            <button class="btn btn-primary selectButtons matchTypeBtn" (click)="addMatchType(matchtype)">{{matchtype.name}}</button>
+          </div>
+        </div>
+      </div>
     </section>
 
 
     <!--Map section-->
     <section class="mapSection">
-      <h4>Choose map</h4>
-      {{selectedMaps | json}}
+      <h4>Choose map (max 2)</h4>
       <div class="input-group mb-3">
         <div *ngFor="let map of mapList">
-          <button class="btn btn-primary selectButtons" (click)="addMap(map)">{{map}}</button>
+          <div *ngIf="map.selected">
+            <button class="btn btn-success selectButtons" (click)="addMap(map)">{{map.name}}</button>
+          </div>
+          <div *ngIf="!map.selected">
+            <button class="btn btn-primary selectButtons" (click)="addMap(map)">{{map.name}}</button>
+          </div>
         </div>
       </div>
     </section>
 
     <!--Rank selection-->
     <section class="rankSection">
-        <h4>Choose your rank</h4>
-        {{selectedRank | json}}
-        <div class="input-group mb-3">
-            <div *ngFor="let skillGroup of skillList; let i = index">
-              <div *ngFor="let skill of skillGroup; let i = index">
-                  <img [src]="skill.imageUrl" class="img-thumbnail" (click)="addRank(skill.name)" alt="skill.name" width="100" height="100">
-
-              </div>
-
+      <h4>Choose your rank</h4>
+      <div class="input-group mb-3">
+        <div *ngFor="let skillGroup of skillList;">
+          <div *ngFor="let skill of skillGroup;">
+            <div *ngIf="skill.selected">
+              <img [src]="skill.imageUrl" class="img-thumbnail selctedImage" (click)="addRank(skill)" alt="skill.name" width="100" height="100">
+            </div>
+            <div *ngIf="!skill.selected">
+              <img [src]="skill.imageUrl" class="img-thumbnail" (click)="addRank(skill)" alt="skill.name" width="100" height="100">
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="FormSubmit">
+      <button class="btn btn-success btn-sm" (click)="findMatch()">Search for match!</button>
     </section>
 
   </div>
