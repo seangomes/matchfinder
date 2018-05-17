@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filterchat',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filterchat.component.css']
 })
 export class FilterchatComponent implements OnInit {
+
+  @Output() searchResult = new EventEmitter<any>();
 
   matchTypeSearch = '';
   mapSearch = '';
@@ -60,9 +62,38 @@ export class FilterchatComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectRank(rank: string) {
-    this.skillSearch = rank;
+  selectRank(skill) {
+    this.skillSearch = '';
+    this.skillList.forEach((arr) => {
+      arr.forEach((item) => {
+        item.selected = false;
+      })
+    })
+    if(skill.selected) {
+      this.skillSearch = '';
+      skill.selected = false;
+    }else {
+      this.skillSearch = skill.name;
+      skill.selected = true;
+    }
+    
+  }
 
+  clearFilters() {
+    this.skillSearch = '';
+    this.matchTypeSearch = '';
+    this.mapSearch = '';
+    this.skillList.forEach((arr) => {
+      arr.forEach((item) => {
+        item.selected = false;
+      })
+    })
+  }
+
+  ngOnChanges() {
+    this.searchResult.emit(this.skillSearch);
+    this.searchResult.emit(this.matchTypeSearch);
+    this.searchResult.emit(this.mapSearch);
   }
 
 }

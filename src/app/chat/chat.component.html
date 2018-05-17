@@ -2,8 +2,7 @@
 <div class="container-fluid">
   <div class="row rowSpace">
     <div class="col-10 chat-container">
-      <app-filterchat></app-filterchat>
-      <app-chatwindow></app-chatwindow>
+      <app-chatwindow [messages$]="messages$"></app-chatwindow>
       <app-matchmaker></app-matchmaker>
 
     </div>

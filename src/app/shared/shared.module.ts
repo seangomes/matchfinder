@@ -12,7 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MatchfilterPipe } from './pipes/matchfilter.pipe';
+
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { MatchfilterPipe } from './pipes/matchfilter.pipe';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ConnectedUserlistComponent, LoaderComponent, NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent, MatchfilterPipe],
-  exports: [ConnectedUserlistComponent, LoaderComponent, NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent, MatchfilterPipe]
+  declarations: [ConnectedUserlistComponent, LoaderComponent, NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent],
+  exports: [ConnectedUserlistComponent, LoaderComponent, NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent]
 })
 export class SharedModule { }

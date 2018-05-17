@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ChatMessage } from '../../chat/models/chatmessage';
+import { ChatMessage } from '../../models/chatmessage';
 
 
 @Pipe({
@@ -8,7 +8,7 @@ import { ChatMessage } from '../../chat/models/chatmessage';
 })
 export class MatchfilterPipe implements PipeTransform {
 
-  transform(chatmessages: ChatMessage[], matchTypeSearch: string, mapSearch: string, rankSearch: string): any {
+  transform(chatmessages: ChatMessage[], matchTypeSearch: string, mapSearch: string, skillSearch: string): any {
     if(chatmessages && chatmessages.length) {
       return chatmessages.filter(msg => {
         if(matchTypeSearch && msg.matchtype.toLowerCase().indexOf(matchTypeSearch.toLowerCase()) === -1) {
@@ -17,7 +17,7 @@ export class MatchfilterPipe implements PipeTransform {
         if(mapSearch && msg.content.toLowerCase().indexOf(mapSearch.toLowerCase()) === -1) {
           return false;
         }
-        if(rankSearch && msg.content.toLowerCase().indexOf(rankSearch.toLowerCase()) === -1) {
+        if(skillSearch && msg.content.toLowerCase().indexOf(skillSearch.toLowerCase()) === -1) {
           return false;
         }
         return true;

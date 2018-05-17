@@ -8,3 +8,8 @@
 ul {
   list-style-type: none;
 }
+
+.selctedImage {
+  background-color: green;
+  border: 3px solid green;
+}

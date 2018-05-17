@@ -3,6 +3,67 @@
     <div class="card-body">
       <!--Loader-->
       <app-loader></app-loader>
+      
+      <!--Filter-->
+      <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0 text-center" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn btn-link" type="button">
+                  <h5>Filters</h5>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3">
+                    <div class="text-center">
+                      <h5>Match</h5>
+                    </div>
+                    <!-- {{match | json}} -->
+                    <select class="form-control" [(ngModel)]="matchTypeSearch" id="match">
+                      <option *ngFor="let match of matchTypeDropdown" [value]="match.name">{{match.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <div class="text-center">
+                      <h5>Map</h5>
+                    </div>
+                    <select class="form-control" [(ngModel)]="mapSearch" id="maps">
+                      <option *ngFor="let map of mapsDropdown" [value]="map.name">{{map.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-6">
+                    <div class="text-center">
+                      <h5>Skill</h5>
+                    </div>
+                    {{skillSearch | json}}
+                    <div class="row">
+                      <ul *ngFor="let skills of skillList" class="col-3">
+                        <li *ngFor="let skill of skills">
+                          <div *ngIf="skill.selected">
+                              <img [src]="skill.imageUrl" class="selctedImage" width="90" height="35" (click)="selectRank(skill)" />
+                          </div>
+                          <div *ngIf="!skill.selected">
+                              <img [src]="skill.imageUrl" width="90" height="35" (click)="selectRank(skill)" />
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                  <button class="btn btn-sm btn-danger" (click)="clearFilters()">Clear all filter</button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      <!--Chat window-->
       <div class="row message-content" *ngFor="let message of messages$ | async | matchfilter: matchTypeSearch:mapSearch:rankSearch">
         <div class="col-2">
           {{message?.date}}
@@ -12,5 +73,4 @@
       </div>
     </div>
   </div>
-
 </div>
