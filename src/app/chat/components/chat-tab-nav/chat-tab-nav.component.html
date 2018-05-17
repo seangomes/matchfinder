@@ -1,0 +1,21 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" *ngFor="let tab of navTabsList$ | async as tab">
+    <div *ngIf="tab.id === 1">
+        <a class="nav-link active" id="tab.id" data-toggle="tab" href="#tab.name" role="tab" aria-controls="tab.name" aria-selected="true">{{tab.name}}</a>
+    </div>
+    <div *ngIf="tab.id !== 1">
+        <a class="nav-link" id="tab.id" data-toggle="tab" href="#tab.name" role="tab" aria-controls="tab.name" aria-selected="true">{{tab.name}}</a>
+    </div>
+  </li>
+  </ul>
+  <div class="tab-content" id="ChatContent" *ngFor="let tab of navTabsList$ | async as tab">
+    <div *ngIf="tab.id === 1">
+        <div class="tab-pane fade show active" id="tab.id" role="tabpanel" aria-labelledby="tab.name-tab">
+
+        </div>
+    </div>
+
+
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+  </div>

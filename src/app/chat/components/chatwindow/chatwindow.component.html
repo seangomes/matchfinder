@@ -3,7 +3,7 @@
     <div class="card-body">
       <!--Loader-->
       <app-loader></app-loader>
-      
+
       <!--Filter-->
       <div class="accordion" id="accordionExample">
           <div class="card">
@@ -15,7 +15,7 @@
               </h5>
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
+              <div class="card-body border-buttom">
                 <div class="row">
                   <div class="col-3">
                     <div class="text-center">
@@ -38,7 +38,6 @@
                     <div class="text-center">
                       <h5>Skill</h5>
                     </div>
-                    {{skillSearch | json}}
                     <div class="row">
                       <ul *ngFor="let skills of skillList" class="col-3">
                         <li *ngFor="let skill of skills">
@@ -62,10 +61,10 @@
             </div>
           </div>
         </div>
-        
+
       <!--Chat window-->
-      <div class="row message-content" *ngFor="let message of messages$ | async | matchfilter: matchTypeSearch:mapSearch:rankSearch">
-        <div class="col-2">
+      <div class="row message-content rowSpace" *ngFor="let message of messages$ | async | matchfilter: matchTypeSearch:mapSearch:skillSearch">
+        <div class="col-3">
           {{message?.date}}
           <{{message?.postedby}}>
         </div>

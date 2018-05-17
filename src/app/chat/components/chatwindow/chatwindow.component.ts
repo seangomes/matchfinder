@@ -35,7 +35,12 @@ export class ChatwindowComponent implements OnInit {
     {name: "Dust2"},
     {name: "Nuke"},
     {name: "Cache"},
-    {name: "Miragge"}
+    {name: "Mirage"},
+    {name:"Inferno"},
+    {name:"Cobblestone"},
+    {name:"Overpass"},
+    {name:"Cache"},
+    {name:"Train"}
   ];
 
   private skillList = [
@@ -66,13 +71,14 @@ export class ChatwindowComponent implements OnInit {
     ]
   ]
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
   }
 
   selectRank(skill) {
-    this.skillSearch = '';
+    //this.skillSearch = '';
     this.skillList.forEach((arr) => {
       arr.forEach((item) => {
         item.selected = false;
@@ -85,7 +91,7 @@ export class ChatwindowComponent implements OnInit {
       this.skillSearch = skill.name;
       skill.selected = true;
     }
-    
+
   }
 
   clearFilters() {

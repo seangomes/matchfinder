@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 //COMPONENTS
 import { ChatwindowComponent } from './components/chatwindow/chatwindow.component';
-import { MessageboxComponent } from './components/messagebox/messagebox.component';
+
 import { ChatComponent } from './chat.component';
 
 //SERVICES
@@ -18,6 +18,7 @@ import { FilterchatComponent } from './components/filterchat/filterchat.componen
 
 //PIPES
 import { MatchfilterPipe } from "./components/filterchat/matchfilter.pipe";
+import { ChatTabNavComponent } from './components/chat-tab-nav/chat-tab-nav.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import { MatchfilterPipe } from "./components/filterchat/matchfilter.pipe";
     FormsModule,
     SharedModule
   ],
-  declarations: [ChatwindowComponent, MessageboxComponent, ChatComponent, MatchmakerComponent, FilterchatComponent, MatchfilterPipe],
+  declarations: [ChatwindowComponent, ChatComponent, MatchmakerComponent, FilterchatComponent, MatchfilterPipe, ChatTabNavComponent],
   providers: [ChatService]
 })
 export class ChatModule { }

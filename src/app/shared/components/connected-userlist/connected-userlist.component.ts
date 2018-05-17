@@ -14,6 +14,9 @@ import 'rxjs/add/operator/do';
 export class ConnectedUserlistComponent implements OnInit {
 
   onlineUsers$: Observable<User[]>;
+  user: User;
+  userDetails: User;
+
 
   constructor(private userService: UserService, private loaderService: LoaderService) { }
 
@@ -23,6 +26,7 @@ export class ConnectedUserlistComponent implements OnInit {
     // );
     //this.loaderService.showLoader();
   }
+
 
 
 
