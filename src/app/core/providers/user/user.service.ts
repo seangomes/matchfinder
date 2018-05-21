@@ -24,11 +24,17 @@ export class UserService {
 
    }
 
-
-
    getOnlineUsers() : Observable<User[]> {
     this.onlineUserCollection = this.afs.collection<User>('users', ref => ref.where('online', '==', true));
     this.onlineUsers$ = this.onlineUserCollection.valueChanges();
     return this.onlineUsers$;
    }
+
+   //Random user from ID
+   getUser(userId: string) : Observable<User> {
+      return this.onlineUserCollection.doc(userId).valueChanges().map((user : User) => user);
+   }
+
+
+
 }

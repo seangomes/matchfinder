@@ -1,0 +1,27 @@
+<!--Top bar-->
+
+<div class="row">
+  <div class="col-6 flag">
+    <span class="float-left">{{user.country}}</span>
+  </div>
+  <div class="col-6 rank">
+    <span class="float-right">{{user.rank}}</span>
+  </div>
+</div>
+
+<!--Profile Image-->
+<div class="row smallSpace">
+  <div class="profileImg">
+    <img class="text-center rounded-circle" [src]="user.photoUrl" height="100" width="100">
+  </div>
+</div>
+
+<!--Profile info-->
+<div class="profileName text-center smallSpace">
+
+    <h3>{{user.username}}</h3>
+    <p *ngIf="user.firstname && user.lastname">{{user.firstname}} {{user.lastname}}</p>
+    <i *ngIf="user.age">Age: {{user.age}}</i>
+
+</div>
+
