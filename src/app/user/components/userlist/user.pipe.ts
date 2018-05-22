@@ -15,6 +15,7 @@ export class UserPipe implements PipeTransform {
         if(searchUsername && user.username.toLowerCase().indexOf(searchUsername.toLowerCase()) === -1) {
           return false;
         }
+        return true;
       });
     }
     else {

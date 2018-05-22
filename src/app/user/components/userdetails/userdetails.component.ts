@@ -11,7 +11,7 @@ export class UserdetailsComponent implements OnInit {
 
   constructor() { }
 
-  @Input() user: Observable<User>;
+  @Input() user: User;
 
   ngOnInit() {
   }

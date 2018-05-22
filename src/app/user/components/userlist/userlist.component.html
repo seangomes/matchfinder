@@ -17,8 +17,8 @@
 
     <!--User list-->
     <div class="col-9">
-      <div class="row">
-        <div class="col-4" *ngFor="let user of (users$ | userFilter:searchUsername | async as user)">
+      <div class="row" *ngIf="users$ | async as users">
+        <div class="col-4" *ngFor="let user of users | userFilter:searchUsername">
           <div class="card rowSpace">
             <div class="card-body minHeight">
               <app-userdetails [user]="user"></app-userdetails>
