@@ -2,10 +2,35 @@
 
 <div class="row">
   <div class="col-6 flag">
-    <span class="float-left">{{user.country}}</span>
+    <div *ngIf="user.country === 'Denmark'">
+      <img src="../../../../assets/images/flags/Denmark-flag.svg" alt="user.country" height="30" width="50">
+    </div>
+    <!-- <span class="float-left">{{user.country}}</span> -->
   </div>
   <div class="col-6 rank">
-    <span class="float-right">{{user.rank}}</span>
+    <!--Silvers-->
+    <div *ngIf="user.rank === 'Silver1'"><img class="float-right" src="../../../../assets/images/ranks/silver1.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'Silver2'"><img class="float-right" src="../../../../assets/images/ranks/silver2.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'Silver3'"><img class="float-right" src="../../../../assets/images/ranks/silver3.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'Silver4'"><img class="float-right" src="../../../../assets/images/ranks/silver4.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'SilverElite'"><img class="float-right" src="../../../../assets/images/ranks/silverelite.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'SilverEliteMaster'"><img class="float-right" src="../../../../assets/images/ranks/silverelitemaster.png" height="38" width="100" alt="user.rank"></div>
+    <!--Golds-->
+    <div *ngIf="user.rank === 'Goldnova1'"><img class="float-right" src="../../../../assets/images/ranks/goldnova1.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'Goldnova2'"><img class="float-right" src="../../../../assets/images/ranks/goldnova2.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'Goldnova3'"><img class="float-right" src="../../../../assets/images/ranks/goldnova3.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'Goldnovamaster'"><img class="float-right" src="../../../../assets/images/ranks/goldnovamaster.png" height="38" width="100" alt="user.rank"></div>
+    <!--Masters-->
+    <div *ngIf="user.rank === 'MasterGuardian'"><img class="float-right" src="../../../../assets/images/ranks/masterguardian.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'MasterGuardian2'"><img class="float-right" src="../../../../assets/images/ranks/masterguardian2.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'MasterGuardianElite'"><img class="float-right" src="../../../../assets/images/ranks/masterguardianelite.png" height="38" width="100" alt="user.rank"></div>
+    <!--Legendary ranks-->
+    <div *ngIf="user.rank === 'DistinguishedMasterGuardian'"><img class="float-right" src="../../../../assets/images/ranks/DistinguishedMasterGuardian.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'LegendaryEagle'"><img class="float-right" src="../../../../assets/images/ranks/LegendaryEagle.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'LegendaryEagleMaster'"><img class="float-right" src="../../../../assets/images/ranks/LegendaryEagleMaster.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'SupremeMasterFirstClass'"><img class="float-right" src="../../../../assets/images/ranks/SupremeMasterFirstClass.png" height="38" width="100" alt="user.rank"></div>
+    <div *ngIf="user.rank === 'TheGlobalElite'"><img class="float-right" src="../../../../assets/images/ranks/TheGlobalElite.png" height="38" width="100" alt="user.rank"></div>
+    <!-- <span class="float-right">{{user.rank}}</span> -->
   </div>
 </div>
 

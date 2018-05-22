@@ -2,3 +2,7 @@
   min-height: 299px;
   max-height: 299px;
 }
+
+.inputBoxMinWidth {
+  min-width: 98px;
+}

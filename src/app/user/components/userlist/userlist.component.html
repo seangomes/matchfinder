@@ -7,7 +7,7 @@
         <div class="col-12 rowSpace">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon3">Username</span>
+              <span class="input-group-text inputBoxMinWidth" id="basic-addon3">Username</span>
             </div>
             <input type="text" [(ngModel)]="searchUsername" class="form-control">
           </div>
@@ -15,7 +15,7 @@
         <div class="col-12 rowSpace">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon3">Rank</span>
+              <span class="input-group-text inputBoxMinWidth" id="basic-addon3">Rank</span>
             </div>
             <input type="text" [(ngModel)]="searchRank" class="form-control">
           </div>
@@ -23,7 +23,7 @@
         <div class="col-12 rowSpace">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon3">Clan</span>
+              <span class="input-group-text inputBoxMinWidth" id="basic-addon3">Clan</span>
             </div>
             <input type="text" [(ngModel)]="searchClanname" class="form-control">
           </div>
@@ -34,7 +34,7 @@
 
     <!--User list-->
     <div class="col-9">
-      <div class="row" *ngIf="users$ | async as users">
+      <div class="row" *ngIf="users">
         <div class="col-4" *ngFor="let user of users | userFilter:searchUsername:searchRank:searchClanname">
           <div class="card rowSpace">
             <div class="card-body minHeight">

@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 
@@ -23,7 +24,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ConnectedUserlistComponent, LoaderComponent, NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent, UserDetailsComponent],
+  declarations: [ConnectedUserlistComponent, LoaderComponent, NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent, UserDetailsComponent, EditUserComponent],
   exports: [ConnectedUserlistComponent, LoaderComponent, NavComponent, HomeComponent, LoginComponent, RegisterComponent, PagenotfoundComponent, FooterComponent, UserDetailsComponent]
 })
 export class SharedModule { }

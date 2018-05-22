@@ -16,7 +16,7 @@ export class LoaderComponent implements OnInit {
   constructor(private loaderService: LoaderService) { }
 
   ngOnInit() {
-    this.loaderService.getLoader().subscribe((loader:any) => {
+    this.loaderSubscription = this.loaderService.getLoader().subscribe((loader:any) => {
       this.loader = loader;
     });
   }

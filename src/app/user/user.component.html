@@ -1,1 +1,10 @@
-<app-userlist [users$]="users$"></app-userlist>
+
+<div *ngIf="users$ | async as users;else loading">
+<app-userlist [users]="users"></app-userlist>
+</div>
+
+<ng-template #loading>
+  <div class="text-center rowSpace">
+      <i class="fas fa-crosshairs fa-spin fa-5x"></i>
+  </div>
+</ng-template>

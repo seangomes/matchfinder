@@ -8,11 +8,12 @@ import { UserdetailsComponent } from './components/userdetails/userdetails.compo
 import { UserPipe } from './components/userlist/user.pipe';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   imports: [
     CommonModule,
     UserRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [UserComponent, UserlistComponent, UserdetailsComponent, UserPipe]
 })

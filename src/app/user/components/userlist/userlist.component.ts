@@ -16,13 +16,13 @@ export class UserlistComponent implements OnInit {
 
   userSelectSubject : BehaviorSubject<User> = new BehaviorSubject<User>(null);
   userSelected: Observable<User> = this.userSelectSubject.asObservable();
-  
+
   //Filters
   searchUsername: string = '';
   searchClanname: string = '';
   searchRank: string = '';
 
-  @Input() users$: Observable<User[]>;
+  @Input() users:User[];
 
 
   ngOnInit() {

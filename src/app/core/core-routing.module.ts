@@ -6,6 +6,7 @@ import { HomeComponent } from '../shared/components/home/home.component';
 import { LoginComponent } from '../shared/components/login/login.component';
 import { PagenotfoundComponent } from '../shared/components/pagenotfound/pagenotfound.component';
 import { RegisterComponent } from '../shared/components/register/register.component';
+import { EditUserComponent } from '../shared/components/edit-user/edit-user.component';
 
 //SERVICES
 import { AuthGuard } from './providers/auth/auth.guard';
@@ -28,6 +29,10 @@ const routes: Routes = [
     {
       path: 'home',
       component: HomeComponent
+    },
+    {
+      path: 'edituser',
+      component: EditUserComponent
     },
     {
       path: 'chat',
