@@ -5,11 +5,28 @@
     <div class="col-3">
       <div class="row">
         <div class="col-12 rowSpace">
-          <h4>Filters</h4>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Username</span>
+            </div>
+            <input type="text" [(ngModel)]="searchUsername" class="form-control">
+          </div>
         </div>
         <div class="col-12 rowSpace">
-          {{searchUsername | json}}
-          <input type="text" [(ngModel)]="searchUsername" class="form-control" placeholder="Username">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Rank</span>
+            </div>
+            <input type="text" [(ngModel)]="searchRank" class="form-control">
+          </div>
+        </div>
+        <div class="col-12 rowSpace">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Clan</span>
+            </div>
+            <input type="text" [(ngModel)]="searchClanname" class="form-control">
+          </div>
         </div>
       </div>
     </div>
@@ -18,7 +35,7 @@
     <!--User list-->
     <div class="col-9">
       <div class="row" *ngIf="users$ | async as users">
-        <div class="col-4" *ngFor="let user of users | userFilter:searchUsername">
+        <div class="col-4" *ngFor="let user of users | userFilter:searchUsername:searchRank:searchClanname">
           <div class="card rowSpace">
             <div class="card-body minHeight">
               <app-userdetails [user]="user"></app-userdetails>

@@ -7,12 +7,16 @@ import { User } from '../../../shared/models/user';
 })
 export class UserPipe implements PipeTransform {
 
-  transform(userList: User[], searchUsername: string): any {
-    console.log(searchUsername);
-    console.log(userList);
+  transform(userList: User[], searchUsername: string, searchRank: string, searchClanname: string): any {
     if(userList && userList.length) {
       return userList.filter(user => {
         if(searchUsername && user.username.toLowerCase().indexOf(searchUsername.toLowerCase()) === -1) {
+          return false;
+        }
+        if(searchRank && user.rank.toLowerCase().indexOf(searchRank.toLowerCase()) === -1) {
+          return false;
+        }
+        if(searchClanname && user.clan.toLowerCase().indexOf(searchClanname.toLowerCase()) === -1) {
           return false;
         }
         return true;

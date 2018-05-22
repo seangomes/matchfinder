@@ -20,17 +20,17 @@
         <a class="nav-link" [routerLink]="['/chat']" routerLinkActive="router-link-active">Chat</a>
       </li>
     </ul>
-
-    <div *ngIf="!(user$ | async)?.username">
-      <button class="btn btn-primary loginBtn" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</button>
-      <button class="btn btn-danger" [routerLink]="['/register']" routerLinkActive="router-link-active">Register</button>
-    </div>
-    <div *ngIf="(user$ | async)?.username">
-      <span class="userInfoContent">
-        <img class="userPhoto" [src]="(user$ | async)?.photoUrl" height="30" width="30"/>
-         {{(user$ | async)?.username}}
-         <button class="btn btn-sm btn-default logoutBtn" (click)="logout()">Logout</button>
+    <div *ngIf="user$ | async as user">
+      <div *ngIf="!user.username">
+        <button class="btn btn-primary loginBtn" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</button>
+        <button class="btn btn-danger" [routerLink]="['/register']" routerLinkActive="router-link-active">Register</button>
+      </div>
+      <div *ngIf="user.username">
+        <span class="userInfoContent">
+          <img class="userPhoto" [src]="user.photoUrl" height="30" width="30" /> {{user.username}}
+          <button class="btn btn-sm btn-default logoutBtn" (click)="logout()">Logout</button>
         </span>
+      </div>
     </div>
   </div>
 </nav>
