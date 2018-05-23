@@ -118,8 +118,14 @@ export class AuthService {
     })
   }
 
+  changeUser(user: User) {
+    if (user) {
+      this.updateExistingUserData(user);
+    }
+  }
+
   //Helpers
-  private getUserFromFSDb(authUser : any) {
+  private getUserFromFSDb(authUser: any) {
     let user = this.afs.collection('users').doc(authUser.uid).valueChanges();
     user.subscribe(data => this.currentUser = data as User);
   }
@@ -128,6 +134,13 @@ export class AuthService {
     this.userCollection.doc(userData.uid).set(userData)
       .then((docRef) => {
         this.router.navigate(['home']);
+      });
+  }
+
+  private updateExistingUserData(userData: User): void {
+    this.userCollection.doc(userData.uid).update(userData)
+      .then((docRef) => {
+        
       });
   }
 

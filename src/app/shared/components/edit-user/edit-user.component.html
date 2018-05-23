@@ -1,7 +1,17 @@
 <div class="container rowSpace">
-  <h1 class="text-center">Create new user</h1>
+  <h1 class="text-center">Update userinfo</h1>
+  <div class="alert alert-success" role="alert" *ngIf="respondMessage !== ''">
+    {{respondMessage}}
+  </div>
   <form [formGroup]="userDetailsForm" (ngSubmit)="changeUserDetails()" novalidate>
-    <!--Firstname Field-->
+     <!--Image Field-->
+     <div class="form-group">
+       <div *ngIf="url">
+        <img [src]="url" class="img-thumbnail" height="100" width="100"/>
+      </div>
+        <input type='file' class="form-control" (change)="readUrl($event)"  id="exampleInputPhotoUrl" aria-describedby="emailHelp">    
+    </div>
+        <!--Firstname Field-->
     <div class="form-group">
       <label for="exampleInputFirstname">Firstname</label>
       <input type="text" formControlName="firstname" class="form-control" id="exampleInputFirstname" aria-describedby="emailHelp"
