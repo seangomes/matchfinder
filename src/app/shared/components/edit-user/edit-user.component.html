@@ -4,13 +4,17 @@
     {{respondMessage}}
   </div>
   <form [formGroup]="userDetailsForm" (ngSubmit)="changeUserDetails()" novalidate>
-     <!--Image Field-->
+     <!-- Image Field
      <div class="form-group">
        <div *ngIf="url">
         <img [src]="url" class="img-thumbnail" height="100" width="100"/>
       </div>
-        <input type='file' class="form-control" (change)="readUrl($event)"  id="exampleInputPhotoUrl" aria-describedby="emailHelp">    
-    </div>
+        <input type='file' class="form-control" (change)="readUrl($event)"  id="exampleInputPhotoUrl" aria-describedby="emailHelp">
+    </div> -->
+
+<!-- Image Field-->
+<app-upload-file></app-upload-file>
+
         <!--Firstname Field-->
     <div class="form-group">
       <label for="exampleInputFirstname">Firstname</label>
