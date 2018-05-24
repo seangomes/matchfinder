@@ -3,8 +3,8 @@
   <div class="alert alert-success" role="alert" *ngIf="respondMessage !== ''">
     {{respondMessage}}
   </div>
-  <form [formGroup]="userDetailsForm" (ngSubmit)="changeUserDetails()" novalidate>
-     <!-- Image Field
+
+  <!-- Image Field
      <div class="form-group">
        <div *ngIf="url">
         <img [src]="url" class="img-thumbnail" height="100" width="100"/>
@@ -12,10 +12,10 @@
         <input type='file' class="form-control" (change)="readUrl($event)"  id="exampleInputPhotoUrl" aria-describedby="emailHelp">
     </div> -->
 
-<!-- Image Field-->
-<app-upload-file></app-upload-file>
-
-        <!--Firstname Field-->
+  <!-- Image Field-->
+  <app-upload-file *ngIf="user" [refId]="user.uid"></app-upload-file>
+  <form [formGroup]="userDetailsForm" (ngSubmit)="changeUserDetails()" novalidate>
+    <!--Firstname Field-->
     <div class="form-group">
       <label for="exampleInputFirstname">Firstname</label>
       <input type="text" formControlName="firstname" class="form-control" id="exampleInputFirstname" aria-describedby="emailHelp"

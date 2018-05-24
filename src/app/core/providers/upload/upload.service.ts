@@ -16,7 +16,7 @@ export class UploadService {
     this.uploadCollection = afs.collection<FileUpload>('uploads');
   }
 
-  pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }, userId?: string, clanId?: string) {
+  pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }, refId: string) {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${fileUpload.file.name}`).put(fileUpload.file);
 
@@ -34,19 +34,17 @@ export class UploadService {
         // success
         fileUpload.url = uploadTask.snapshot.downloadURL;
         fileUpload.name = fileUpload.file.name;
-        if(userId) {
-          fileUpload.userId = userId;
-        }
-        if(clanId) {
-          fileUpload.clanId = clanId;
-        }
+        fileUpload.$key = refId;
         this.saveFileData(fileUpload)
       }
     );
   }
 
   private saveFileData(fileUpload: FileUpload) {
-    this.uploadCollection.add(fileUpload);
+    console.log(fileUpload);
+    this.uploadCollection.add(fileUpload).then((data) => {
+      console.log(data);
+    }).catch(err => console.log(err));
     // this.db.list(`${this.basePath}/`).push(fileUpload);
   }
 

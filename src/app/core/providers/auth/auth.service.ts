@@ -100,7 +100,7 @@ export class AuthService {
         favweap: '',
         country: '',
       }
-      this.updateUserData(newUser);
+      this.insertUserData(newUser);
     }).catch((error) => console.log(error));
   }
 
@@ -118,6 +118,7 @@ export class AuthService {
     })
   }
 
+  //Change user details
   changeUser(user: User) {
     if (user) {
       this.updateExistingUserData(user);
@@ -130,17 +131,19 @@ export class AuthService {
     user.subscribe(data => this.currentUser = data as User);
   }
 
-  private updateUserData(userData: User): void {
+  //Insert new user into FB
+  private insertUserData(userData: User): void {
     this.userCollection.doc(userData.uid).set(userData)
       .then((docRef) => {
         this.router.navigate(['home']);
       });
   }
 
+  //Update user info in FB
   private updateExistingUserData(userData: User): void {
     this.userCollection.doc(userData.uid).update(userData)
       .then((docRef) => {
-        
+        this.router.navigate(['home']);
       });
   }
 

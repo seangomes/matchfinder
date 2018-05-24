@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FileUpload } from '../../models/upload';
 import { UploadService } from '../../../core/providers/upload/upload.service';
 
@@ -9,6 +9,7 @@ import { UploadService } from '../../../core/providers/upload/upload.service';
 })
 export class UploadFileComponent implements OnInit {
 
+  @Input() refId: string
 
   selectedFiles: FileList
   currentFileUpload: FileUpload
@@ -26,7 +27,7 @@ export class UploadFileComponent implements OnInit {
   upload() {
     const file = this.selectedFiles.item(0)
     this.currentFileUpload = new FileUpload(file);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress)
+    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress, this.refId)
   }
 
 }

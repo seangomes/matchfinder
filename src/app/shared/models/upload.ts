@@ -5,9 +5,7 @@ export class FileUpload {
   url: string;
   progress: number;
   createdAt: Date = new Date();
-  userId?: string;
-  clanId?: string;
-
+  
   constructor(file: File) {
     this.file = file;
   }

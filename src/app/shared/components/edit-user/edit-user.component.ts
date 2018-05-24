@@ -25,7 +25,6 @@ export class EditUserComponent implements OnInit {
   constructor(private authService: AuthService, private fb: FormBuilder) {
     this.authService.user$.subscribe((data) => {
       this.user = data;
-      console.log(this.user);
 
       this.userDetailsForm.patchValue({
         firstname: this.user.firstname,
@@ -36,9 +35,7 @@ export class EditUserComponent implements OnInit {
         rank: this.user.rank,
         clan: this.user.clan
       });
-      
       this.url = this.user.photoUrl;
-
     });
    }
 
