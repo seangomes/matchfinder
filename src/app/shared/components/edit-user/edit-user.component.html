@@ -4,13 +4,12 @@
     {{respondMessage}}
   </div>
 
-  <!-- Image Field
-     <div class="form-group">
-       <div *ngIf="url">
-        <img [src]="url" class="img-thumbnail" height="100" width="100"/>
-      </div>
-        <input type='file' class="form-control" (change)="readUrl($event)"  id="exampleInputPhotoUrl" aria-describedby="emailHelp">
-    </div> -->
+  <!-- Image Field Prewview -->
+  <div class="form-group">
+    <div *ngIf="url">
+      <img [src]="url" class="img-thumbnail" height="100" width="100" />
+    </div>
+  </div>
 
   <!-- Image Field-->
   <app-upload-file *ngIf="user" [refId]="user.uid"></app-upload-file>

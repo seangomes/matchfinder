@@ -42,12 +42,27 @@ export class UploadService {
 
   private saveFileData(fileUpload: FileUpload) {
     console.log(fileUpload);
-    this.uploadCollection.add(fileUpload).then((data) => {
-      console.log(data);
+    const id = fileUpload.$key;
+
+    let file = {
+      $key: id,
+      name: fileUpload.name,
+      url: fileUpload.url,
+      createdAt: fileUpload.createdAt
+    }
+    this.uploadCollection.doc(file.$key).set(file).then(() => {
+      //update user profile picture with url
+      this.afs.collection('users').doc(file.$key).update({
+        photoUrl: file.url
+      });
     }).catch(err => console.log(err));
-    // this.db.list(`${this.basePath}/`).push(fileUpload);
   }
 
+
+  private deleteFileData(name: string) {
+    const storageRef = firebase.storage().ref();
+    storageRef.child('/uploads/' + name).delete();
+  }
 
 
 }
