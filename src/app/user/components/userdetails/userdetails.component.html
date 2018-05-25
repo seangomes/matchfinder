@@ -5,7 +5,6 @@
     <div *ngIf="user.country === 'Denmark'">
       <img src="../../../../assets/images/flags/Denmark-flag.svg" alt="user.country" height="30" width="50">
     </div>
-    <!-- <span class="float-left">{{user.country}}</span> -->
   </div>
   <div class="col-6 rank">
     <!--Silvers-->
@@ -30,7 +29,6 @@
     <div *ngIf="user.rank === 'LegendaryEagleMaster'"><img class="float-right" src="../../../../assets/images/ranks/LegendaryEagleMaster.png" height="38" width="100" alt="user.rank"></div>
     <div *ngIf="user.rank === 'SupremeMasterFirstClass'"><img class="float-right" src="../../../../assets/images/ranks/SupremeMasterFirstClass.png" height="38" width="100" alt="user.rank"></div>
     <div *ngIf="user.rank === 'TheGlobalElite'"><img class="float-right" src="../../../../assets/images/ranks/TheGlobalElite.png" height="38" width="100" alt="user.rank"></div>
-    <!-- <span class="float-right">{{user.rank}}</span> -->
   </div>
 </div>
 
@@ -43,10 +41,11 @@
 
 <!--Profile info-->
 <div class="profileName text-center smallSpace">
-
     <h3>{{user.username}}</h3>
     <p *ngIf="user.firstname && user.lastname">{{user.firstname}} {{user.lastname}}</p>
     <i *ngIf="user.age">Age: {{user.age}}</i>
+    <br>
+    <i *ngIf="user.favweap">Favorite weapon: {{user.favweap}}</i>
 
 </div>
 

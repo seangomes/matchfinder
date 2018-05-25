@@ -17,8 +17,8 @@ export class EditUserComponent implements OnInit {
 
   private countries = ["Denmark", "Sweden", "Norway"];
   private favweapons = ["AK-47", "Galil AR", "M4A4", "M4A1-S", "AWP", "FAMAS", "Desert Eagle"];
-  private ranks = ["Silver1", "Silver2", "Silver3", "Silver4", "SilverElite", "SilverEliteMaster", 
-                   "Goldnova1", "Goldnova2", "Goldnova3", "Goldnovamaster", 
+  private ranks = ["Silver1", "Silver2", "Silver3", "Silver4", "SilverElite", "SilverEliteMaster",
+                   "Goldnova1", "Goldnova2", "Goldnova3", "Goldnovamaster",
                    "MasterGuardian", "MasterGuardian2", "MasterGuardianElite",
                   "DistinguishedMasterGuardian", "LegendaryEagle", "LegendaryEagleMaster", "SupremeMasterFirstClass", "TheGlobalElite"];
 
@@ -26,16 +26,19 @@ export class EditUserComponent implements OnInit {
     this.authService.user$.subscribe((data) => {
       this.user = data;
 
-      this.userDetailsForm.patchValue({
-        firstname: this.user.firstname,
-        lastname: this.user.lastname,
-        age: this.user.age,
-        country: this.user.country,
-        favweap: this.user.favweap,
-        rank: this.user.rank,
-        clan: this.user.clan
-      });
-      this.url = this.user.photoUrl;
+      if(this.user) {
+        this.userDetailsForm.patchValue({
+          firstname: this.user.firstname,
+          lastname: this.user.lastname,
+          age: this.user.age,
+          country: this.user.country,
+          favweap: this.user.favweap,
+          rank: this.user.rank,
+          clan: this.user.clan
+        });
+        this.url = this.user.photoUrl;
+      }
+
     });
    }
 
@@ -56,11 +59,11 @@ export class EditUserComponent implements OnInit {
   readUrl(event:any) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
-  
+
       reader.onload = (event:any) => {
         this.url = event.target.result;
       }
-  
+
       reader.readAsDataURL(event.target.files[0]);
     }
   }
@@ -68,7 +71,7 @@ export class EditUserComponent implements OnInit {
 
   changeUserDetails() {
     if(this.userDetailsForm.valid) {
-      
+
       this.user = {
         uid: this.user.uid,
         age: this.userDetailsForm.value.age,
@@ -86,11 +89,11 @@ export class EditUserComponent implements OnInit {
 
       //goto service
       this.authService.changeUser(this.user);
-      
+
 
       this.respondMessage = 'Your user is now updated!';
     }
-    
+
   }
 
 }

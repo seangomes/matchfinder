@@ -14,7 +14,7 @@ import { User } from '../../../shared/models/user';
 })
 export class LoginComponent implements OnInit {
 
-  private errorMessage = '';
+  private errorMessage;
   private user;
   private saveLoginInfo : boolean = false;
 
@@ -42,8 +42,13 @@ export class LoginComponent implements OnInit {
       //calling the service
       this.authService.loginWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password, this.loginForm.value.rememberMe)
       .then((data) => {
-        this.loaderService.hideLoader();
-        this.errorMessage = data;
+        if(data) {
+          this.loaderService.hideLoader();
+          this.errorMessage = data;
+        }else {
+          this.router.navigate(['home']);
+        }
+
       });
 
 

@@ -18,7 +18,9 @@ export class AuthService {
 
   private userCollection: AngularFirestoreCollection<User>;
 
-  public user$: Observable<User>;
+  private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+
+  public user$: Observable<User> = this.userSubject.asObservable();
   public users$: Observable<User[]>;
   public currentUser: User;
 
@@ -43,18 +45,23 @@ export class AuthService {
     this.users$ = this.userCollection.valueChanges();
 
     this.user$.subscribe((data) => {
-      this.currentUser = data;
+      if(data) {
+        this.userSubject.next(data);
+      }
     });
 
   }
 
   get getCurrentUser(): User {
-    return this.currentUser;
+    let user = this.userSubject.getValue();
+    return user;
   }
 
   loginWithEmailAndPassword(email: string, password: string, rememberme: boolean) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((userData) => {
+        //update subject
+        this.userSubject.next(userData);
         //update online status for user
         this.userCollection.doc(userData.uid).update({
           online: true
@@ -64,7 +71,6 @@ export class AuthService {
             if (rememberme) {
               localStorage.setItem('currentuser', JSON.stringify(this.currentUser));
             }
-            this.router.navigate(['home']);
           })
       })
       .catch((error) => {
@@ -106,16 +112,19 @@ export class AuthService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-
-      this.userCollection.doc(this.currentUser.uid).update({
-        online: false
-      })
-        .then(() => {
-          this.currentUser = new User;
-          localStorage.removeItem('currentuser');
-          this.router.navigate(['/home']);
-        });
-    })
+      let tempUser = this.userSubject.getValue();
+      if (tempUser) {
+        this.userCollection.doc(tempUser.uid).update({
+          online: false
+        })
+          .then(() => {
+            //this.currentUser = new User;
+            this.userSubject.next(null);
+            localStorage.removeItem('currentuser');
+            this.router.navigate(['/home']);
+          });
+      }
+    });
   }
 
   //Change user details
@@ -128,7 +137,9 @@ export class AuthService {
   //Helpers
   private getUserFromFSDb(authUser: any) {
     let user = this.afs.collection('users').doc(authUser.uid).valueChanges();
-    user.subscribe(data => this.currentUser = data as User);
+    user.subscribe((data) => {
+      this.userSubject.next(data as User);
+    });
   }
 
   //Insert new user into FB
