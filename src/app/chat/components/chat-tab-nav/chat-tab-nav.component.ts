@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { NavTab } from '../../models/navtab';
 import { BehaviorSubject } from 'rxjs';
+import { ChatMessage } from '../../models/chatmessage';
 
 
 @Component({
@@ -12,9 +13,11 @@ import { BehaviorSubject } from 'rxjs';
 export class ChatTabNavComponent implements OnInit {
 
 
+  @Input() messages$ : Observable<ChatMessage>
+
   navTabsListSubject: BehaviorSubject<NavTab[]> = new BehaviorSubject<NavTab[]>([
-    {id:1, canRemove: false, name:"Findmatch"},
-    {id:2, canRemove: true, name:"Test"}
+    {id:1, canRemove: false, name:"Findmatch", active: true},
+    {id:2, canRemove: true, name:"Test", active : false}
   ]);
   navTabsList$: Observable<NavTab[]> = this.navTabsListSubject.asObservable();
   constructor() {
@@ -30,7 +33,8 @@ export class ChatTabNavComponent implements OnInit {
       let newTab : NavTab = {
         canRemove:true,
         name: tab.name,
-        id: tabs.length + 1
+        id: tabs.length + 1,
+        active: false
       };
       tabs.push(newTab);
       this.navTabsListSubject.next(tabs);
@@ -46,6 +50,19 @@ export class ChatTabNavComponent implements OnInit {
         }
       });
       this.navTabsListSubject.next(tabs);
+    }
+  }
+
+  selectTab(index: number) {
+    let tabs = this.navTabsListSubject.getValue();
+
+    for (var i = 0; i <= tabs.length - 1; i++) {
+      if(index === i) {
+        tabs[i].active = true;
+      }
+      else {
+        tabs[i].active = false;
+      }
     }
   }
 

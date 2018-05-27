@@ -1,21 +1,28 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" *ngFor="let tab of navTabsList$ | async as tab">
+  <li class="nav-item" *ngFor="let tab of navTabsList$ | async as tab; let i = index">
     <div *ngIf="tab.id === 1">
-        <a class="nav-link active" id="tab.id" data-toggle="tab" href="#tab.name" role="tab" aria-controls="tab.name" aria-selected="true">{{tab.name}}</a>
+      <a class="nav-link" id="{{tab.name}}-tab" data-toggle="tab" href="#{{tab.name}}" role="tab" attr.aria-controls="{{tab.name}}"
+        aria-selected="true" [class.active]="tab.active" (click)="selectTab(i)">{{tab.name}}</a>
     </div>
     <div *ngIf="tab.id !== 1">
-        <a class="nav-link" id="tab.id" data-toggle="tab" href="#tab.name" role="tab" aria-controls="tab.name" aria-selected="true">{{tab.name}}</a>
+      <a class="nav-link" data-toggle="tab" id="{{tab.name}}-tab" href="#{{tab.name}}" role="tab" attr.aria-controls="{{tab.name}}"
+        aria-selected="false" [class.active]="tab.active" (click)="selectTab(i)">{{tab.name}}</a>
     </div>
   </li>
-  </ul>
-  <div class="tab-content" id="ChatContent" *ngFor="let tab of navTabsList$ | async as tab">
-    <div *ngIf="tab.id === 1">
-        <div class="tab-pane fade show active" id="tab.id" role="tabpanel" aria-labelledby="tab.name-tab">
+</ul>
 
-        </div>
+<!--Tab Content-->
+<div class="tab-content" id="ChatTabContent">
+  <div *ngFor="let tab of navTabsList$ | async as tab">
+    <div class="tab-pane fade show active" *ngIf="tab.active" id="{{tab.name}}" role="tabpanel" attr.aria-labelledby="{{tab.name}}-tab">
+
+      <!--Main chat window-->
+      <div *ngIf="tab.name === 'Findmatch'">
+        <app-chatwindow [messages$]="messages$"></app-chatwindow>
+        <app-matchmaker></app-matchmaker>
+      </div>
+
+
     </div>
-
-
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
   </div>
+</div>
